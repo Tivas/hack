@@ -21,6 +21,10 @@ let webApp = router {
             let! counter = getInitCounter()
             return! Successful.OK counter next ctx
         })
+    get "/api/forsi" (fun next ctx ->
+        task {
+            return! Successful.OK "hejsa" next ctx
+        })
 }
 
 let configureSerialization (services:IServiceCollection) =
