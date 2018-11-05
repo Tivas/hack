@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,8 +28,11 @@ namespace autobot.Controllers
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
-                var response1 = httpClient.PostAsync<string>(new Uri("http://dev-aud-cwa01.spcph.local:8080/api"), magicString, new JsonMediaTypeFormatter() ).Result;
-                return new string[] { response1.Content.ToString() };
+                //httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+                var content = new StringContent(magicString, Encoding.UTF8, "application/json");
+                var response1 = httpClient.PostAsync(new Uri("http://dev-aud-cwa01.spcph.local:8080/api"), content);
+                var res = response1.Result;
+                return new string[] { res.Content.ReadAsStringAsync().Result };
             }
         }
 
