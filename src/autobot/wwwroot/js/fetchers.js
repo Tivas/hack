@@ -36,6 +36,7 @@ var parsePredition = function (div, jsonData) {
                     cellLabel.innerText = prediction.label;
 
                     var cellValue = document.createElement("td");
+                    cellValue.style.width = "200px";
                     var progressBar = document.createElement("progress");
                     progressBar.classList.add("progress");
                     progressBar.setAttribute("max", 100);
