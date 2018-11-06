@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace autobot.Controllers
 {
@@ -25,6 +28,8 @@ namespace autobot.Controllers
         }
     }
     ";
+            CultureInfo ci = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            ci.NumberFormat.CurrencyDecimalSeparator = ".";
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
@@ -32,7 +37,9 @@ namespace autobot.Controllers
                 var content = new StringContent(magicString, Encoding.UTF8, "application/json");
                 var response1 = httpClient.PostAsync(new Uri("http://dev-aud-cwa01.spcph.local:8080/api"), content);
                 var res = response1.Result;
-                return new string[] { res.Content.ReadAsStringAsync().Result };
+                JObject data = JObject.Parse(res.Content.ReadAsStringAsync().Result);
+                var predition = Math.Round(float.Parse(data.SelectToken("models[1].predictions[0].probability").ToString(), ci) / 100);
+                return new string[] { predition.ToString() };
             }
         }
 
