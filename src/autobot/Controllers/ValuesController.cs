@@ -18,7 +18,7 @@ namespace autobot.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<string> Get()
         {
             var magicString = @"{
   ""payload"": {
@@ -37,9 +37,8 @@ namespace autobot.Controllers
                 var content = new StringContent(magicString, Encoding.UTF8, "application/json");
                 var response1 = httpClient.PostAsync(new Uri("http://dev-aud-cwa01.spcph.local:8080/api"), content);
                 var res = response1.Result;
-                JObject data = JObject.Parse(res.Content.ReadAsStringAsync().Result);
-                var predition = Math.Round(float.Parse(data.SelectToken("models[1].predictions[0].probability").ToString(), ci) / 100);
-                return new string[] { predition.ToString() };
+                //JObject data = JObject.Parse(res.Content.ReadAsStringAsync().Result);
+                return res.Content.ReadAsStringAsync().Result;
             }
         }
 
