@@ -1,8 +1,20 @@
 ﻿function moveFrontLeft() {
-    var imgElm = document.getElementById("test2");
-    imgElm.classList.remove("shake");
-    imgElm.classList.add("front");
-    imgElm.classList.add("left");
+    var imgElms = document.getElementsByClassName("test");
+    for (var i = 0; i < imgElms.length; i++) {
+        var imgElm = imgElms[i];
+        imgElm.classList.remove("shake");
+        if (i % 2 === 0) {
+            imgElm.classList.add("left");
+        } else {
+            imgElm.classList.add("right");
+        }
+        if (i % 3 === 0) {
+            imgElm.classList.add("front");
+        }
+        if (i % 4 === 0) {
+            imgElm.classList.add("back");
+        }
+    }
 }
 
 function shake() {

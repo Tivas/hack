@@ -41,7 +41,7 @@ div.centered img {
 div.stack img {
     position: absolute;
     height: 100px;
-    width: 100px;
+    width: auto;
 }
 
     /*Every other image inside a stack div*/
