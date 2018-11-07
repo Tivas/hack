@@ -1,20 +1,24 @@
-﻿/*Every other image inside a stack div*/
-.Aligner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+﻿.front {
+    transition: 3s;
+    right: 70% !important;
 }
 
-.Aligner-item {
-    max-width: 50%;
+.back {
+    left: 70% !important;
 }
 
-.Aligner-item--top {
-    align-self: flex-start;
+.left {
+    transition: 3s;
+    top: 70% !important;
 }
 
-.Aligner-item--bottom {
-    align-self: flex-end;
+.right {
+    bottom: 70% !important;
+}
+
+.mid {
+    left: 0;
+    right: 0;
 }
 
 div.centered img {
@@ -30,13 +34,15 @@ div.centered img {
     margin: auto;
 }
 
+
+
 div.stack img {
-    transition: .15s;
     position: absolute;
     height: 100px;
     width: 100px;
 }
 
+    /*Every other image inside a stack div*/
     div.stack img:nth-child(odd) {
         -webkit-transform: rotate(5deg);
         -moz-transform: rotate(5deg);
@@ -70,6 +76,7 @@ div.stack img {
     }
 
     div.stack img:hover {
+        transition: .15s;
         -webkit-transform: scale(1.15);
         -moz-transform: scale(1.15);
         transform: scale(1.15);
