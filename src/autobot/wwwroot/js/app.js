@@ -11,7 +11,7 @@
         if (i % 3 === 0) {
             imgElm.classList.add("front");
         }
-        if (i % 4 === 0) {
+        if (i % 5 === 0) {
             imgElm.classList.add("back");
         }
     }

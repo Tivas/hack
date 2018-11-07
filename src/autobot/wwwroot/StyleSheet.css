@@ -5,6 +5,8 @@
 }
 
 .back {
+    transition: 3s;
+    animation: move 3s;
     left: 70% !important;
 }
 
@@ -15,6 +17,8 @@
 }
 
 .right {
+    transition: 3s;
+    animation: move 3s;
     bottom: 70% !important;
 }
 
