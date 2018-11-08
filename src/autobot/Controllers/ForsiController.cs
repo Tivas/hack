@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace autobot.Controllers
@@ -16,8 +17,8 @@ namespace autobot.Controllers
 
 		    if (proformaNo == "RP12345")
 		    {
-			    var img = GetStaticImage();
-				a.Add(img);
+			    var img = GetStaticImages();
+				a.AddRange(img);
 		    }
 		    else
 		    {
@@ -26,16 +27,20 @@ namespace autobot.Controllers
 		    return new JsonResult(a);
 	    }
 
-	    private static byte[] GetStaticImage()
+	    private static IEnumerable<byte[]> GetStaticImages()
 	    {
 		    var a = System.Reflection.Assembly.GetExecutingAssembly();
-		    using (var resFilestream = a.GetManifestResourceStream("autobot.Resources.mazda.jpg"))
+		    var imgs = a.GetManifestResourceNames().Where(i => i.Contains("rp00001"));
+		    foreach (var img in imgs)
 		    {
-			    if (resFilestream == null) return null;
-			    var ba = new byte[resFilestream.Length];
-			    resFilestream.Read(ba, 0, ba.Length);
-			    return ba;
+			    using (var resFilestream = a.GetManifestResourceStream(img))
+			    {
+				    if (resFilestream == null) yield break;
+				    var ba = new byte[resFilestream.Length];
+				    resFilestream.Read(ba, 0, ba.Length);
+				    yield return ba;
+			    }
 		    }
-	    }
+		}
     }
 }

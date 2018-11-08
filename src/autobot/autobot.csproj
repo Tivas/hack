@@ -9,12 +9,42 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\0009.JPEG" />
+    <EmbeddedResource Include="Resources\0010.JPEG" />
+    <EmbeddedResource Include="Resources\0011.JPEG" />
+    <EmbeddedResource Include="Resources\0012.jpeg" />
+    <EmbeddedResource Include="Resources\0013.JPEG" />
     <EmbeddedResource Include="Resources\mazda.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (1).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (2).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (3).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (4).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (5).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (6).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (7).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (8).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707 (9).jpg" />
+    <EmbeddedResource Include="Resources\rp00001140066-ac30707.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\0009.JPEG" />
+    <None Remove="Resources\0010.JPEG" />
+    <None Remove="Resources\0011.JPEG" />
+    <None Remove="Resources\0012.jpeg" />
+    <None Remove="Resources\0013.JPEG" />
+    <None Remove="Resources\rp00001140066-ac30707 %281%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %282%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %283%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %284%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %285%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %286%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %287%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %288%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707 %289%29.jpg" />
+    <None Remove="Resources\rp00001140066-ac30707.jpg" />
   </ItemGroup>
 
   <ItemGroup>
