@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace autobot.Controllers
@@ -10,12 +12,18 @@ namespace autobot.Controllers
 	    [HttpGet("getReportImages/{proformaNo}")]
 	    public ActionResult<string> GetReportImages(string proformaNo)
 	    {
-		    var img = new byte[] { };
+		    List<byte[]> a = new List<byte[]>();
+
 		    if (proformaNo == "RP12345")
 		    {
-			    img = GetStaticImage();
+			    var img = GetStaticImage();
+				a.Add(img);
 		    }
-		    return new JsonResult(img); // File(img, "image/jpeg");
+		    else
+		    {
+			    
+		    }
+		    return new JsonResult(a);
 	    }
 
 	    private static byte[] GetStaticImage()
